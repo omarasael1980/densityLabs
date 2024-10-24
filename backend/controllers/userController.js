@@ -74,7 +74,9 @@ export const createUser = async (req, res) => {
  */
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      include: { rol: true },
+    });
     users.map((user) => {
       user.password = undefined;
     });

@@ -8,14 +8,13 @@ import {
   getUserByToken,
 } from "../controllers/userController.js";
 import { Router } from "express";
-import authMiddleware from "../middleware/autMiddleware.js";
 
 const router = Router();
 router.post("/", createUser);
-router.get("/", authMiddleware, getAllUsers);
-router.get("/:id", authMiddleware, getUserById);
-router.put("/:id", authMiddleware, updateUser);
-router.delete("/:id", authMiddleware, deleteUser);
+router.get("/", getAllUsers);
+router.get("/:id", getUserById);
+router.put("/:id", updateUser);
+router.delete("/:id", deleteUser);
 router.post("/login/", login);
 router.post("/getUserByToken/", getUserByToken);
 
